@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.ctf.mapper.RoleAuthMapper">
+
+
+    <!--
+    //根据角色id删除角色权限关系
+    public int removeRoleAuthByRid(Integer roleId);
+    -->
+    <delete id="removeRoleAuthByRid">
+        delete from role_auth where role_id = #{roleId}
+    </delete>
+
+
+    <!--
+     //根据角色id查询角色分配的所有菜单权限id
+    public List<Integer> findAuthIdByRid(Integer roleId);
+    -->
+    <select id="findAuthIdByRid" resultType="integer">
+        select auth_id from role_auth where role_id = #{roleId}
+    </select>
+
+
+    <!--
+    //添加角色权限关系
+    public int insertRoleAuth(RoleAuth roleAuth);
+    -->
+    <insert id="insertRoleAuth">
+        insert into role_auth
+        values (null, #{roleId}, #{authId})
+    </insert>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
